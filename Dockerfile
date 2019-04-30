@@ -30,6 +30,8 @@ COPY scripts/validatemordhau.txt /opt/steamcmd/validatemordhau.txt
 RUN chmod -R 770 /opt/scripts/
 RUN chown -R steam /opt/
 
+RUN ulimit -n 1000000
+
 USER steam
 
 EXPOSE $VAC_PORT/tcp
