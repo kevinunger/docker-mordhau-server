@@ -12,24 +12,24 @@ ENV PORT="27015"
 ENV GAME_PORT="7777"
 ENV GAME_PORT1="7778"
 ENV VALIDATE=""
-ENV UID=99
-ENV GID=100
+ENV UID="99"
+ENV GID="100"
 
 RUN mkdir $DATA_DIR
 RUN mkdir $STEAMCMD
 RUN mkdir $GAME_DIR
 RUN useradd -d $DATA_DIR -s /bin/bash --uid $UID --gid $GID steam
-RUN chown -R steam $DATA_DIR
+RUN chown -R $UID:$GID $DATA_DIR
 
 RUN ulimit -n 2048
 
-EXPOSE $PORT/tcp
-EXPOSE $GAME_PORT/udp
-EXPOSE $GAME_PORT1/udp
+EXPOSE $PORT/tcp $GAME_PORT/udp $GAME_PORT1/udp
 
 ADD /scripts/ /opt/scripts/
-RUN chmod -R 774 /opt/scripts/
-RUN chown -R steam /opt/scripts
+RUN chmod -R 777 /opt/scripts/
+RUN chown -R $UID:$GID /opt/scripts
+
+VOLUME /serverdata
 
 USER steam
 
