@@ -1,32 +1,25 @@
 #!/bin/bash
-if [ ! -f ${STEAMCMD}/steamcmd.sh ]; then
-    wget -q -O ${STEAMCMD}/steamcmd_linux.tar.gz http://media.steampowered.com/client/steamcmd_linux.tar.gz 
-    tar --directory ${STEAMCMD} -xvzf /opt/steamcmd/steamcmd_linux.tar.gz
-    rm ${STEAMCMD}/steamcmd_linux.tar.gz
-fi
-
-echo "update steamcmd"
-
-if [ ! -f "${STEAMCMD}/public/steambootstrapper_english.txt" ]; then
-    ${STEAMCMD}/steamcmd.sh \
-    +login anonymous \
-    +quit
+if [ ! -f ${STEAMCMD}/./steamcmd.sh ]; then
+	echo "steam not found"
+	curl -o ${STEAMCMD}/steamcmd_linux.tar.gz "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz"
+	tar --directory ${STEAMCMD} -xvzf ${STEAMCMD}/steamcmd_linux.tar.gz
+	rm -v ${STEAMCMD}/steamcmd_linux.tar.gz	
 fi
 
 echo "download / update game"
 
 if [ "${VALIDATE}" == "" ]; then
-	${STEAMCMD}/steamcmd.sh \
-	+force_install_dir ${GAME_DIR}/mordhau
-	+login anonymous
-	+app_update 629800
-	+quit
+	${STEAMCMD}/./steamcmd.sh \
+	+login anonymous \
+	+force_install_dir ${GAME_DIR} \
+	+app_update 629800 \
+	+quit 
 else
-	${STEAMCMD}/steamcmd.sh \
-	+force_install_dir ${GAME_DIR}/mordhau
-	+login anonymous
-	+app_update 629800
-	+quit
+	${STEAMCMD}/./steamcmd.sh \
+	+login anonymous \
+	+force_install_dir ${GAME_DIR} \
+	+app_update 629800 validate\
+	+quit 
 fi
 
 echo "start-server"
