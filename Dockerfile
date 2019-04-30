@@ -28,7 +28,7 @@ ADD /scripts/ /opt/scripts/
 COPY /scripts/updatemordhau.txt /opt/steamcmd/updatemordhau.txt
 COPY /scripts/validatemordhau.txt /opt/steamcmd/validatemordhau.txt
 RUN chmod -R 770 /opt/scripts/
-RUN chown -R steam /opt
+RUN chown -R steam /opt/
 
 USER steam
 
