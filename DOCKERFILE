@@ -12,6 +12,7 @@ ENV GAME_DIR="${DATA}/mordhau"
 ENV GAME_ID="629800"
 ENV VAC_PORT=27015
 ENV GAME_PORT=7777
+ENV GAME_PORT1=7778
 ENV VALIDATE=""
 ENV UID=99
 ENV GID=100
@@ -31,5 +32,9 @@ RUN cp -v /opt/scripts/updatemordahu.txt /opt/steamcmd/updatemordahu.txt
 RUN cp -v /opt/scripts/validatemordahu.txt /opt/steamcmd/validatemordahu.txt
 
 USER steam
+
+EXPOSE $VAC_PORT/tcp
+EXPOSE $GAME_PORT/udp
+EXPOSE $GAME_PORT1/udp
 
 ENTRYPOINT ["/opt/scripts/start-md-server.sh"]
