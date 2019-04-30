@@ -25,10 +25,10 @@ RUN chown -R steam $DATA
 
 RUN mkdir -p /opt/scripts
 ADD scripts/ /opt/scripts/
-COPY scripts/updatemordhau.txt /opt/steamcmd/updatemordhau.txt
-COPY scripts/validatemordhau.txt /opt/steamcmd/validatemordhau.txt
 RUN chmod -R 770 /opt/scripts/
 RUN chown -R steam /opt/scripts
+COPY /opt/scripts/updatemordhau.txt ${STEAMCMD}/updatemordhau.txt
+COPY /opt/scripts/validatemordhau.txt ${STEAMCMD}/validatemordhau.txt
 
 RUN ulimit -n 1000000
 
@@ -38,4 +38,4 @@ EXPOSE $VAC_PORT/tcp
 EXPOSE $GAME_PORT/udp
 EXPOSE $GAME_PORT1/udp
 
-ENTRYPOINT ["scripts/start-md-server.sh"]
+ENTRYPOINT ["/opt/scripts/start-md-server.sh"]
