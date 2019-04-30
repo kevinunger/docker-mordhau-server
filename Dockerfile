@@ -24,9 +24,9 @@ RUN useradd -d $DATA -s /bin/bash --uid $UID --gid $GID steam
 RUN chown -R steam $DATA
 
 RUN mkdir -p /opt/scripts
-ADD /scripts/ /opt/scripts/
-COPY /scripts/updatemordhau.txt /opt/steamcmd/updatemordhau.txt
-COPY /scripts/validatemordhau.txt /opt/steamcmd/validatemordhau.txt
+ADD scripts/ /opt/scripts/
+COPY scripts/updatemordhau.txt /opt/steamcmd/updatemordhau.txt
+COPY scripts/validatemordhau.txt /opt/steamcmd/validatemordhau.txt
 RUN chmod -R 770 /opt/scripts/
 RUN chown -R steam /opt/
 
@@ -36,4 +36,4 @@ EXPOSE $VAC_PORT/tcp
 EXPOSE $GAME_PORT/udp
 EXPOSE $GAME_PORT1/udp
 
-ENTRYPOINT ["/opt/scripts/start-md-server.sh"]
+ENTRYPOINT ["scripts/start-md-server.sh"]
