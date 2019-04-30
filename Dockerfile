@@ -36,4 +36,4 @@ EXPOSE $VAC_PORT/tcp
 EXPOSE $GAME_PORT/udp
 EXPOSE $GAME_PORT1/udp
 
-ENTRYPOINT ["/scripts/start-md-server.sh"]
+ENTRYPOINT ["/opt/scripts/start-md-server.sh"]
