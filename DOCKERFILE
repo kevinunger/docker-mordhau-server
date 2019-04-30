@@ -27,8 +27,8 @@ RUN ulimit -n 1000000
 ADD /scripts/ /opt/scripts/
 RUN chmod -R 770 /opt/scripts/
 RUN chown -R steam /opt/scripts
-RUN cp -v /opt/scripts/updatemordahu.txt /opt/steamcmd
-RUN cp -v /opt/scripts/validatemordahu.txt /opt/steamcmd
+RUN cp -v /opt/scripts/updatemordahu.txt /opt/steamcmd/updatemordahu.txt
+RUN cp -v /opt/scripts/validatemordahu.txt /opt/steamcmd/validatemordahu.txt
 
 USER steam
 
