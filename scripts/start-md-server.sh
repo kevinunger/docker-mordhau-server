@@ -27,4 +27,4 @@ fi
 
 echo "start-server"
 
-${GAME_DIR}/./MordhauServer.sh -log
+${GAME_DIR}/./MordhauServer.sh
