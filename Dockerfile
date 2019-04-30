@@ -17,19 +17,16 @@ ENV VALIDATE=""
 ENV UID=99
 ENV GID=100
 
-RUN mkdir $DATA
-RUN mkdir $STEAMCMD
-RUN mkdir $GAME_DIR
+RUN mkdir -p $DATA
+RUN mkdir -p $STEAMCMD
+RUN mkdir -p $GAME_DIR
 RUN useradd -d $DATA -s /bin/bash --uid $UID --gid $GID steam
 RUN chown -R steam $DATA
 
-RUN ulimit -n 1000000
 
 ADD /scripts/ /opt/scripts/
 RUN chmod -R 770 /opt/scripts/
 RUN chown -R steam /opt/scripts
-RUN cp -v /opt/scripts/updatemordahu.txt /opt/steamcmd/updatemordahu.txt
-RUN cp -v /opt/scripts/validatemordahu.txt /opt/steamcmd/validatemordahu.txt
 
 USER steam
 
