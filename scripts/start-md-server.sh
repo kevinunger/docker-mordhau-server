@@ -17,11 +17,15 @@ echo "download / update game"
 
 if [ "${VALIDATE}" == "" ]; then
 	${STEAMCMD}/steamcmd.sh \
-	+runscript updatemordhau \
+	+force_install_dir ${GAME_DIR}/mordhau
+	+login anonymous
+	+app_update 629800
 	+quit
 else
 	${STEAMCMD}/steamcmd.sh \
-	+runscript validatemordhau \
+	+force_install_dir ${GAME_DIR}/mordhau
+	+login anonymous
+	+app_update 629800
 	+quit
 fi
 
