@@ -56,6 +56,29 @@ docker stop mordhau
 
 In order to customize the server you must go to /opt/mordhau/Mordhau/Saved/Config/LinuxServer, there you will find (Game.ini). In order to make yourself an admin you need your SteamID64. Go here to find yours: https://steamid.io/
 
+Tips for map rotation. (The default map and gamemode is FFA_ThePit. There is no way around this other than changing level or waiting for map rotation.)
+
+Ex: FL_Taiga would be frontline on Taiga
+```
+Gamemodes
+FL = Frontline
+BR = Battle Royale
+HRD = Horde
+SKM = Skirmish
+FFA = FFA/Deathmatch
+TDM = Team Deathmatch
+```
+```
+Maps
+ThePit
+Camp
+Grad
+Contraband
+Tourney
+MountainPeak
+Taiga
+```
+
 ```
 docker start mordhau
 ```
