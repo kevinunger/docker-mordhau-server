@@ -27,7 +27,7 @@ docker run -d \
  -p 7777:7777/udp \
  -p 7778:7778/udp \
  --net=bridge \
- --restart=unless-stopped
+ --restart=unless-stopped \
  -v /opt/mordhau:/serverdata/mordhau \
  --name mordhau tetricz/mordhau-server
 ```
