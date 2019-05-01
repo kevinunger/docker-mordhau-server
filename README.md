@@ -1,6 +1,6 @@
 # Mordhau 
 
-* As of 29.4.2019 [(/Dockerfile)](https://github.com/Tetricz/docker-mordhau-server/blob/master/Dockerfile)
+* [(/Dockerfile)](https://github.com/Tetricz/docker-mordhau-server/blob/master/Dockerfile)
 
 # What is Mordhau?
 https://mordhau.com/faq/#what-is-mordhau
@@ -9,6 +9,15 @@ Mordhau is a multiplayer medieval first-person fighting game with a strong empha
 It features a deep and fluid combat system that allows those that master it to turn into an unstoppable force on the battlefield.
 
 NOTE: This is only the server. You still have to buy the game. (https://store.steampowered.com/app/629760/)
+
+## Network Speeds
+```
+Upload
+16 players, ~4 mbit/s
+48 players, ~10 mbit/s
+64 players, ~16 mbit/s
+Download - Same as upload
+```
 
 ## Quick Start
 
@@ -40,7 +49,7 @@ For those new to Docker, here is an explanation of the options:
 * `--restart` - Restart the server if it crashes and at system start unless you have stopped it
 * `--name` - Name the container "mordhau" (otherwise it has a funny random name).
 
-The `chown` command is needed because in 0.16+, we no longer run the game server as root for security reasons, but rather as a 'mordhau' user with user id 845. The host must therefore allow these files to be written by that user.
+The `chown` command is needed because we don't run the game server as root for security reasons, but rather as a 'steam' user with user id 99:100(by default). The host must therefore allow these files to be written by that user.
 
 Check the logs to see what happened:
 
