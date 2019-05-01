@@ -78,7 +78,7 @@ Tourney
 MountainPeak
 Taiga
 ```
-
+Start the server:
 ```
 docker start mordhau
 ```
