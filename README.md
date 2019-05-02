@@ -31,10 +31,7 @@ sudo chown 99:100 /opt/mordhau
 docker run -d \
  -p 27015:27015/udp \
  -p 27015:27015 \
- -p 7777:7777 \
- -p 7778:7778 \
  -p 7777:7777/udp \
- -p 7778:7778/udp \
  --net=bridge \
  --restart=unless-stopped \
  -v /opt/mordhau:/serverdata/mordhau \
