@@ -21,21 +21,21 @@ Download - Same as upload
 
 ## Quick Start
 
-Run the server to create the necessary folder structure and configuration files. For this example data is stored in `/opt/mordhau`.
-
+Before running create the necessary folder structure and configuration files. For this example data is stored in `/opt/mordhau`.
 ```
 mkdir -p /opt/mordhau
-
 chown 99:100 /opt/mordhau
-
+```
+For a Steam directory in case you want to run multiple containers.
+```
 mkdir -p /opt/steamcmd
-
 chown 99:100 /opt/steamcmd
 ```
+The `chown` command is needed because we don't run the game server as root for security reasons, but rather as a 'steam' user with user id 99:100(by default). The host must therefore allow these files to be written by that user.
+Run the server
 ```
 docker run -d \
  -p 27015:27015/udp \
- -p 27015:27015 \
  -p 7777:7777/udp \
  --net=bridge \
  --restart=unless-stopped \
@@ -44,16 +44,29 @@ docker run -d \
  --name mordhau tetricz/mordhau-server
 ```
 
+If you get an error where it says "read-only file system" somewhere at the end. It's a permission issue and you chould change the path to one elsewhere or correct the permissions.
+```
+mkdir -p /home/<user>/mordhau
+chown 99:100 /home/<user>/mordhau
+```
+
 For those new to Docker, here is an explanation of the options:
 
 * `-d` - Run as a daemon ("detached").
-* `-p` - Expose ports.
+* `-p` - Expose ports. The left side is what the world sees.
 * `-v` - Mount `/opt/mordhau` on the local file system to `/mordhau` in the container.
 * `--restart` - Restart the server if it crashes and at system start unless you have stopped it
 * `--name` - Name the container "mordhau" (otherwise it has a funny random name).
 
-The `chown` command is needed because we don't run the game server as root for security reasons, but rather as a 'steam' user with user id 99:100(by default). The host must therefore allow these files to be written by that user.
+You can also use:
 
+`-e` - Change the ENV to something else. `-e VALIDATE=True` will make steam validate the server files.
+
+You can use this to change the ports for the server will listen on if you plan to run multiple using the same machine.
+```
+-e QUERYPORT=27015
+-e GAME_PORT=7777
+```
 Check the logs to see what happened:
 
 ```
