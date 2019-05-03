@@ -24,10 +24,15 @@ Download - Same as upload
 Run the server to create the necessary folder structure and configuration files. For this example data is stored in `/opt/mordhau`.
 
 ```
-sudo mkdir -p /opt/mordhau
+mkdir -p /opt/mordhau
 
-sudo chown 99:100 /opt/mordhau
+chown 99:100 /opt/mordhau
 
+mkdir -p /opt/steamcmd
+
+chown 99:100 /opt/steamcmd
+```
+```
 docker run -d \
  -p 27015:27015/udp \
  -p 27015:27015 \
@@ -35,6 +40,7 @@ docker run -d \
  --net=bridge \
  --restart=unless-stopped \
  -v /opt/mordhau:/serverdata/mordhau \
+ -v /opt/steamcmd:/serverdata/steamcmd \
  --name mordhau tetricz/mordhau-server
 ```
 
