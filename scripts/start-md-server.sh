@@ -24,4 +24,4 @@ fi
 
 echo "start-server"
 
-${GAME_DIR}/./MordhauServer.sh 
+${GAME_DIR}/./MordhauServer.sh -log -port=$GAME_PORT -queryport=$QUERYPORT

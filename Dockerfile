@@ -8,9 +8,8 @@ RUN apt-get -y install curl lib32gcc1 libfontconfig1 libpangocairo-1.0-0 libnss3
 ENV DATA_DIR="/serverdata"
 ENV STEAMCMD="${DATA_DIR}/steamcmd"
 ENV GAME_DIR="${DATA_DIR}/mordhau"
-ENV PORT="27015"
+ENV QUERYPORT="27015"
 ENV GAME_PORT="7777"
-ENV GAME_PORT1="7778"
 ENV VALIDATE=""
 ENV UID="99"
 ENV GID="100"
@@ -24,8 +23,6 @@ RUN chown -R $UID:$GID $DATA_DIR
 RUN ulimit -n 2048
 
 VOLUME /serverdata
-
-EXPOSE $PORT/udp $GAME_PORT/udp $GAME_PORT/tcp $GAME_PORT1/udp $GAME_PORT1/tcp
 
 ADD /scripts/ /opt/scripts/
 RUN chmod -R 770 /opt/scripts/
