@@ -32,19 +32,6 @@ mkdir -p /opt/steamcmd
 chown 99:100 /opt/steamcmd
 ```
 The `chown` command is needed because we don't run the game server as root for security reasons, but rather as a 'steam' user with user id 99:100(by default). The host must therefore allow these files to be written by that user.
-Run the server
-```
-docker run -d \
- -p 27015:27015/udp \
- -p 7777:7777/udp \
- --net=bridge \
- --restart=unless-stopped \
- -v /opt/mordhau:/serverdata/mordhau \
- -v /opt/steamcmd:/serverdata/steamcmd \
- --name mordhau tetricz/mordhau-server
-```
-
-If you get an error where it says "read-only file system" somewhere at the end. It's a permission issue and you chould change the path to one elsewhere or correct the permissions.
 ```
 mkdir -p /home/<user>/mordhau
 chown 99:100 /home/<user>/mordhau
@@ -67,6 +54,20 @@ You can use this to change the ports for the server will listen on if you plan t
 -e QUERYPORT=27015
 -e GAME_PORT=7777
 ```
+Run the server :
+```
+docker run -d \
+ -p 27015:27015/udp \
+ -p 7777:7777/udp \
+ --net=bridge \
+ --restart=unless-stopped \
+ -v /opt/mordhau:/serverdata/mordhau \
+ -v /opt/steamcmd:/serverdata/steamcmd \
+ --name mordhau tetricz/mordhau-server
+```
+
+If you get an error where it says "read-only file system" somewhere at the end. It's a permission issue and you chould change the path to one elsewhere or correct the permissions.
+
 Check the logs to see what happened:
 
 ```
