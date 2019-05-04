@@ -21,7 +21,7 @@ Download - Same as upload
 
 ## Quick Start
 
-Before running create the necessary folder structure and configuration files. For this example data is stored in `/opt/mordhau`.
+Before running create the necessary folder structure. For this example data is stored in `/opt/mordhau`.
 ```
 mkdir -p /opt/mordhau
 chown 99:100 /opt/mordhau
