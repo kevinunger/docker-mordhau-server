@@ -10,15 +10,22 @@ ENV STEAMCMD="${DATA_DIR}/steamcmd"
 ENV GAME_DIR="${DATA_DIR}/mordhau"
 ENV QUERYPORT="27015"
 ENV GAME_PORT="7777"
-ENV VALIDATE=""
-ENV UID="99"
-ENV GID="100"
+ENV VALIDATE="TRUE"
+ENV UID="1000"
+ENV GID="1000"
+ENV STEAMID64=""
+ENV PLAYER_COUNT="16"
+ENV SERVER_NAME="PLZ CHANGE"
+ENV SERVER_PASSWORD=""
+ENV ADMIN_PASSWORD="buttermynips"
+ENV GAME_MODE=""
+ENV STEAMID64=""
 
-RUN mkdir -p $DATA_DIR
-RUN mkdir -p $STEAMCMD
-RUN mkdir -p $GAME_DIR
-RUN useradd -d $DATA_DIR -s /bin/bash --uid $UID --gid $GID steam
-RUN chown -R $UID:$GID $DATA_DIR
+RUN mkdir -p ${DATA_DIR}
+RUN mkdir -p ${STEAMCMD}
+RUN mkdir -p ${GAME_DIR}
+RUN useradd -d ${DATA_DIR} -s /bin/bash --uid ${UID} --gid ${GID} steam
+RUN chown -R ${UID}:${GID} ${DATA_DIR}
 
 RUN ulimit -n 2048
 
@@ -26,7 +33,7 @@ VOLUME /serverdata
 
 ADD /scripts/ /opt/scripts/
 RUN chmod -R 770 /opt/scripts/
-RUN chown -R $UID:$GID /opt/scripts
+RUN chown -R ${UID}:${GID} /opt/scripts
 
 USER steam
 
