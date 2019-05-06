@@ -18,19 +18,24 @@ chown -R 99:100 /home/steam
 The `chown` command is needed because we don't run the game server as root for security reasons, but rather as a 'steam' user with user id 99:100(by default).
 
 ### Docker Compose
-List of variables
+There is an example of a docker-compose provided(with 3 servers by defualt). You can download and edit that to your hearts pleasure. This is really useful for running multiple servers at once. All you need to do is edit it and:
 ```
-PLAYER_COUNT=32
-SERVER_NAME=
+docker-compose up -d
+```
+List of variables you can edit.
+```
+PLAYER_COUNT=16
+SERVER_NAME=Server
 QUERYPORT=27015
 GAME_PORT=7777
+UID=99
+GID=100
 STEAMID64=
-GAME_MODE=FL
-SERVER=3
-ADMIN_PASSWORD
+ADMIN_PASSWORD=
+SERVER_PASSWORD
+GAME_MODE=
+SERVER=
 ```
-
-
 
 ### Docker Run
 
