@@ -5,21 +5,21 @@ MAINTAINER Tetricz
 RUN apt-get update
 RUN apt-get -y install curl lib32gcc1 libfontconfig1 gettext-base libpangocairo-1.0-0 libnss3 libgconf2-4 libxi6 libxcursor1 libxss1 libxcomposite1 libasound2 libxdamage1 libxtst6 libatk1.0-0 libxrandr2
 
-ENV DATA_DIR="/serverdata" \
- STEAMCMD="${DATA_DIR}/steamcmd" \
- GAME_DIR="${DATA_DIR}/mordhau" \
- QUERYPORT="27015" \
- GAME_PORT="7777" \
- VALIDATE="TRUE" \
- UID="99" \
- GID="100" \
- STEAMID64="" \
- PLAYER_COUNT="16" \
- SERVER_NAME="PLZ CHANGE" \
- SERVER_PASSWORD="" \
- ADMIN_PASSWORD="" \
- GAME_MODE="" \
- SERVER=""
+ENV DATA_DIR="/serverdata"
+ENV STEAMCMD="${DATA_DIR}/steamcmd"
+ENV GAME_DIR="${DATA_DIR}/mordhau"
+ENV QUERYPORT="27015"
+ENV GAME_PORT="7777"
+ENV VALIDATE="TRUE"
+ENV UID="99"
+ENV GID="100"
+ENV STEAMID64=""
+ENV PLAYER_COUNT="16"
+ENV SERVER_NAME="PLZ CHANGE"
+ENV SERVER_PASSWORD=""
+ENV ADMIN_PASSWORD=""
+ENV GAME_MODE=""
+ENV SERVER=""
 
 RUN mkdir -p ${DATA_DIR}
 RUN mkdir -p ${STEAMCMD}
@@ -32,8 +32,6 @@ RUN ulimit -n 2048
 ADD /scripts/ /opt/scripts/
 RUN chmod -R 770 /opt/scripts/
 RUN chown -R ${UID}:${GID} /opt/scripts
-
-EXPOSE ${GAME_PORT}/udp ${QUERYPORT}/udp
 
 USER steam
 
