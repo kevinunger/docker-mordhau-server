@@ -22,13 +22,13 @@ ENV DATA_DIR="/serverdata" \
 	SERVER=""
 
 RUN mkdir -p ${DATA_DIR}
-RUN	mkdir -p ${STEAMCMD}
-RUN	mkdir -p ${GAME_DIR}
+RUN mkdir -p ${STEAMCMD}
+RUN mkdir -p ${GAME_DIR}
 	
-RUN	useradd -d ${DATA_DIR} -s /bin/bash --uid ${UID} --gid ${GID} steam
-RUN	chown -R ${UID}:${GID} ${DATA_DIR}
+RUN useradd -d ${DATA_DIR} -s /bin/bash --uid ${UID} --gid ${GID} steam
+RUN chown -R ${UID}:${GID} ${DATA_DIR}
 
-RUN	ulimit -n 2048
+RUN ulimit -n 2048
 
 VOLUME /serverdata
 
