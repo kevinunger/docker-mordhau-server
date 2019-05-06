@@ -10,10 +10,10 @@ services:
          - ./mordhau:/serverdata/mordhau
         environment:
          - PLAYER_COUNT=8
-         - SERVER_NAME=Booty Pirates Horde
+         - SERVER_NAME=
          - QUERYPORT=27015
          - GAME_PORT=7777
-         - STEAMID64=76561198046807627
+         - STEAMID64=
          - GAME_MODE=HRD
          - SERVER=1
         ports:
@@ -29,10 +29,10 @@ services:
          - ./mordhau:/serverdata/mordhau
         environment:
          - PLAYER_COUNT=16
-         - SERVER_NAME=Booty Pirates Deathmatch
+         - SERVER_NAME=
          - QUERYPORT=27016
          - GAME_PORT=7778
-         - STEAMID64=76561198046807627
+         - STEAMID64=
          - GAME_MODE=DM
          - SERVER=2
         ports:
