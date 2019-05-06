@@ -37,6 +37,7 @@ fi
 #--------------------------------------------------------------------------------
 if [ ! -f ${GAME_DIR}/Mordhau/Saved/Config/LinuxServer/Game${SERVER}.ini ]; then
 	if [ "${GAME_MODE}" == "FL" ]; then
+		export DEFAULTMAP="ServerDefaultMap=/Game/Mordhau/Maps/TaigaMap/FL_Taiga.FL_Taiga"
 		export MAP1="MapRotation=FL_Taiga" \
 		MAP2="MapRotation=FL_MountainPeak" \
 		MAP3="MapRotation=FL_Camp" \
@@ -46,6 +47,7 @@ fi
 
 if [ ! -f ${GAME_DIR}/Mordhau/Saved/Config/LinuxServer/Game${SERVER}.ini ]; then
 	if [ "${GAME_MODE}" == "SKM" ]; then
+		export DEFAULTMAP="ServerDefaultMap=/Game/Mordhau/Maps/DuelCamp/SKM_Camp.SKM_Camp"
 		export MAP1="MapRotation=SKM_Contraband" \
 		MAP2="MapRotation=SKM_Camp" \
 		MAP3="MapRotation=SKM_Grad" \
@@ -58,6 +60,7 @@ fi
 
 if [ ! -f ${GAME_DIR}/Mordhau/Saved/Config/LinuxServer/Game${SERVER}.ini ]; then
 	if [ "${GAME_MODE}" == "SKM_64" ]; then
+		export DEFAULTMAP="ServerDefaultMap=/Game/Mordhau/Maps/DuelCamp/SKM_Camp.SKM_Camp"
 		export MAP1="MapRotation=SKM_Taiga_64" \
 		MAP2="MapRotation=SKM_MountainPeak_64" \
 		MAP3="MapRotation=SKM_Grad_64" \
@@ -67,6 +70,7 @@ fi
 
 if [ ! -f ${GAME_DIR}/Mordhau/Saved/Config/LinuxServer/Game${SERVER}.ini ]; then
 	if [ "${GAME_MODE}" == "TDM" ]; then
+		export DEFAULTMAP="ServerDefaultMap=/Game/Mordhau/Maps/ThePit/TDM_ThePit.TDM_ThePit"
 		export MAP1="MapRotation=TDM_Contraband" \
 		MAP2="MapRotation=TDM_Camp" \
 		MAP3="MapRotation=TDM_Grad" \
@@ -79,6 +83,7 @@ fi
 
 if [ ! -f ${GAME_DIR}/Mordhau/Saved/Config/LinuxServer/Game${SERVER}.ini ]; then
 	if [ "${GAME_MODE}" == "TDM_64" ]; then
+		export DEFAULTMAP="ServerDefaultMap=/Game/Mordhau/Maps/ThePit/TDM_ThePit.TDM_ThePit"
 		export MAP1="MapRotation=TDM_Contraband" \
 		MAP2="MapRotation=TDM_Camp" \
 		MAP3="MapRotation=TDM_Grad" \
@@ -93,6 +98,7 @@ fi
 
 if [ ! -f ${GAME_DIR}/Mordhau/Saved/Config/LinuxServer/Game${SERVER}.ini ]; then
 	if [ "${GAME_MODE}" == "FFA" ]; then
+		export DEFAULTMAP="ServerDefaultMap=/Game/Mordhau/Maps/ThePit/FFA_ThePit.FFA_ThePit"
 		export MAP1="MapRotation=FFA_Contraband" \
 		MAP2="MapRotation=FFA_Camp" \
 		MAP3="MapRotation=FFA_Grad" \
@@ -103,7 +109,8 @@ if [ ! -f ${GAME_DIR}/Mordhau/Saved/Config/LinuxServer/Game${SERVER}.ini ]; then
 	fi
 fi
 if [ ! -f ${GAME_DIR}/Mordhau/Saved/Config/LinuxServer/Game${SERVER}.ini ]; then
-	if [ "${GAME_MODE}" == "FFA" ]; then
+	if [ "${GAME_MODE}" == "HRD" ]; then
+		export DEFAULTMAP="ServerDefaultMap=/Game/Mordhau/Maps/DuelCamp/HRD_Camp.HRD_Camp"
 		export MAP1="MapRotation=HRD_Camp" \
 		MAP2="MapRotation=HRD_Grad" \
 		MAP3="MapRotation=HRD_Taiga" \
@@ -112,16 +119,17 @@ if [ ! -f ${GAME_DIR}/Mordhau/Saved/Config/LinuxServer/Game${SERVER}.ini ]; then
 fi
 
 if [ ! -f ${GAME_DIR}/Mordhau/Saved/Config/LinuxServer/Game${SERVER}.ini ]; then
-	if [ "${GAME_MODE}" == "FFA" ]; then
+	if [ "${GAME_MODE}" == "BR" ]; then
+		export DEFAULTMAP="ServerDefaultMap=/Game/Mordhau/Maps/TaigaMap/BR_Taiga.BR_Taiga"
 		export MAP1="MapRotation=BR_Grad" \
 		MAP2="MapRotation=BR_Taiga"
 	fi
 fi
 #--------------------------------------------------------------------------------
 
-#-------------------------------------------
-#Copying default config and changes settings
-#-------------------------------------------
+#------------------------------------------
+#Copying default config and change settings
+#------------------------------------------
 echo "Checking Game.ini"
 
 if [ ! -f ${GAME_DIR}/Mordhau/Saved/Config/LinuxServer/Game${SERVER}.ini ]; then
