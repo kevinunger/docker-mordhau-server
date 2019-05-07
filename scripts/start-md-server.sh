@@ -16,19 +16,21 @@ fi
 #------------------------
 #Download and Update Game
 #------------------------
-echo "downloading / updating game"
-if [ "${VALIDATE}" == "" ]; then
-	${STEAMCMD}/./steamcmd.sh \
-	+login anonymous \
-	+force_install_dir ${GAME_DIR} \
-	+app_update 629800 \
-	+quit 
-else
-	${STEAMCMD}/./steamcmd.sh \
-	+login anonymous \
-	+force_install_dir ${GAME_DIR} \
-	+app_update 629800 validate\
-	+quit 
+if [ "${CONNECT}" == "TRUE" ]
+	echo "downloading / updating game"
+	if [ "${VALIDATE}" == "" ]; then
+		${STEAMCMD}/./steamcmd.sh \
+		+login anonymous \
+		+force_install_dir ${GAME_DIR} \
+		+app_update 629800 \
+		+quit 
+	else
+		${STEAMCMD}/./steamcmd.sh \
+		+login anonymous \
+		+force_install_dir ${GAME_DIR} \
+		+app_update 629800 validate\
+		+quit 
+	fi
 fi
 #------------------------
 
@@ -125,6 +127,18 @@ if [ ! -f ${GAME_DIR}/Mordhau/Saved/Config/LinuxServer/Game${SERVER}.ini ]; then
 		MAP2="MapRotation=BR_Taiga"
 	fi
 fi
+if [ ! -f ${GAME_DIR}/Mordhau/Saved/Config/LinuxServer/Game${SERVER}.ini ]; then
+	if [ "${GAME_MODE}" == "" ]; then
+		export DEFAULTMAP="ServerDefaultMap=/Game/Mordhau/Maps/ThePit/FFA_ThePit.FFA_ThePit"
+		export MAP1="MapRotation=FFA_Contraband" \
+		MAP2="MapRotation=FFA_Camp" \
+		MAP3="MapRotation=TDM_Grad" \
+		MAP4="MapRotation=FFA_ThePit" \
+		MAP5="MapRotation=TDM_Camp" \
+		MAP6="MapRotation=TDM_ThePit" \
+		MAP7="MapRotation=FFA_Tourney"
+	fi
+fi
 #--------------------------------------------------------------------------------
 
 #------------------------------------------
@@ -141,10 +155,10 @@ fi
 
 if [ "${COPY_CONFIG}" == "true" ]; then
 	mkdir -p ${GAME_DIR}/Mordhau/Saved/Config/LinuxServer
-	curl -o ${GAME_DIR}/temp.ini "https://raw.githubusercontent.com/Tetricz/docker-mordhau-server/master/scripts/Game.ini"
+	curl -o ${GAME_DIR}/temp.ini "https://raw.githubusercontent.com/Tetricz/docker-mordhau-server/experimental/scripts/Game.ini"
 	envsubst < "${GAME_DIR}/temp.ini" > "${GAME_DIR}/Mordhau/Saved/Config/LinuxServer/Game${SERVER}.ini"
 	rm -v "${GAME_DIR}/temp.ini"
-	curl -o ${GAME_DIR}/temp2.ini "https://raw.githubusercontent.com/Tetricz/docker-mordhau-server/master/scripts/Engine.ini"
+	curl -o ${GAME_DIR}/temp2.ini "https://raw.githubusercontent.com/Tetricz/docker-mordhau-server/experimental/scripts/Engine.ini"
 	envsubst < "${GAME_DIR}/temp2.ini" > "${GAME_DIR}/Mordhau/Saved/Config/LinuxServer/Engine${SERVER}.ini"
 	rm -v "${GAME_DIR}/temp2.ini"
 fi
