@@ -16,7 +16,7 @@ fi
 #------------------------
 #Download and Update Game
 #------------------------
-if [ "${CONNECT}" == "True" ]
+if [ "${STEAM_CONNECT}" == "True" ]
 	echo "downloading / updating game"
 	if [ "${VALIDATE}" == "" ]; then
 		${STEAMCMD}/./steamcmd.sh \
