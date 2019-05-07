@@ -36,6 +36,7 @@ services:
          - STEAMID64=
          - GAME_MODE=DM
          - SERVER=2
+         - STEAM_CONNECT=false
         ports:
          - "7778:7778/udp"
          - "27016:27016/udp"
