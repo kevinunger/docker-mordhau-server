@@ -24,6 +24,7 @@ docker-compose up -d
 ```
 List of variables you can edit.
 ```
+STEAM_CONNECT=True
 PLAYER_COUNT=16
 SERVER_NAME=Server
 QUERYPORT=27015
