@@ -3,18 +3,18 @@ services:
     Mordhau-server 1:
         restart: unless-stopped
         container_name: Mordhau1
-        image: tetricz/mordhau-server:experimental
+        image: tetricz/mordhau-server
 
         volumes:
          - ./steamcmd:/serverdata/steamcmd
          - ./mordhau:/serverdata/mordhau
         environment:
-         - PLAYER_COUNT=8
+         - PLAYER_COUNT=16
          - SERVER_NAME=
          - QUERYPORT=27015
          - GAME_PORT=7777
          - STEAMID64=
-         - GAME_MODE=HRD
+         - GAME_MODE=
          - SERVER=1
         ports:
          - "7777:7777/udp"
@@ -22,7 +22,7 @@ services:
     Mordhau-server 2:
         restart: unless-stopped
         container_name: Mordhau2
-        image: tetricz/mordhau-server:experimental
+        image: tetricz/mordhau-server
 
         volumes:
          - ./steamcmd:/serverdata/steamcmd
@@ -41,7 +41,7 @@ services:
     Mordhau-server 3:
         restart: unless-stopped
         container_name: Mordhau3
-        image: tetricz/mordhau-server:experimental
+        image: tetricz/mordhau-server
 
         volumes:
          - ./steamcmd:/serverdata/steamcmd
