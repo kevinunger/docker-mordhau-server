@@ -14,9 +14,10 @@ fi
 #---------------------
 
 #------------------------
-#Download and Update Game
+#Connect to steam Download and Update Game
 #------------------------
 if [ "${STEAM_CONNECT}" == "True" ]
+	echo "${STEAM_CONNECT}"
 	echo "downloading / updating game"
 	if [ "${VALIDATE}" == "" ]; then
 		${STEAMCMD}/./steamcmd.sh \
@@ -31,6 +32,8 @@ if [ "${STEAM_CONNECT}" == "True" ]
 		+app_update 629800 validate\
 		+quit 
 	fi
+else
+	echo "Steam is disabled for this containter"
 fi
 #------------------------
 
