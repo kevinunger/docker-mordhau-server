@@ -141,10 +141,10 @@ fi
 
 if [ "${COPY_CONFIG}" == "true" ]; then
 	mkdir -p ${GAME_DIR}/Mordhau/Saved/Config/LinuxServer
-	curl -o ${GAME_DIR}/temp.ini "https://raw.githubusercontent.com/Tetricz/docker-mordhau-server/experimental/scripts/Game.ini"
+	curl -o ${GAME_DIR}/temp.ini "https://raw.githubusercontent.com/Tetricz/docker-mordhau-server/master/scripts/Game.ini"
 	envsubst < "${GAME_DIR}/temp.ini" > "${GAME_DIR}/Mordhau/Saved/Config/LinuxServer/Game${SERVER}.ini"
 	rm -v "${GAME_DIR}/temp.ini"
-	curl -o ${GAME_DIR}/temp2.ini "https://raw.githubusercontent.com/Tetricz/docker-mordhau-server/experimental/scripts/Engine.ini"
+	curl -o ${GAME_DIR}/temp2.ini "https://raw.githubusercontent.com/Tetricz/docker-mordhau-server/master/scripts/Engine.ini"
 	envsubst < "${GAME_DIR}/temp2.ini" > "${GAME_DIR}/Mordhau/Saved/Config/LinuxServer/Engine${SERVER}.ini"
 	rm -v "${GAME_DIR}/temp2.ini"
 fi
