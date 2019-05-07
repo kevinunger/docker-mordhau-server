@@ -1,6 +1,6 @@
 version: '3'
 services:
-    Mordhau-server 1:
+    Mordhau1:
         restart: unless-stopped
         container_name: Mordhau1
         image: tetricz/mordhau-server
@@ -20,7 +20,7 @@ services:
         ports:
          - "7777:7777/udp"
          - "27015:27015/udp"
-    Mordhau-server 2:
+    Mordhau2:
         restart: unless-stopped
         container_name: Mordhau2
         image: tetricz/mordhau-server
@@ -40,7 +40,7 @@ services:
         ports:
          - "7778:7778/udp"
          - "27016:27016/udp"
-    Mordhau-server 3:
+    Mordhau3:
         restart: unless-stopped
         container_name: Mordhau3
         image: tetricz/mordhau-server
