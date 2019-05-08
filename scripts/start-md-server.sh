@@ -170,4 +170,4 @@ fi
 
 echo "starting-server"
 
-${GAME_DIR}/./MordhauServer.sh -log -port=$GAME_PORT -queryport=$QUERYPORT -GAMEINI=${GAME_DIR}/Mordhau/Saved/Config/LinuxServer/Game${SERVER}.ini -ENGINEINI=${GAME_DIR}/Mordhau/Saved/Config/LinuxServer/Engine${SERVER}.ini
+${GAME_DIR}/./MordhauServer.sh -log -port=$GAME_PORT -queryport=$QUERYPORT -BeaconPort=$BEACONPORT -GAMEINI=${GAME_DIR}/Mordhau/Saved/Config/LinuxServer/Game${SERVER}.ini -ENGINEINI=${GAME_DIR}/Mordhau/Saved/Config/LinuxServer/Engine${SERVER}.ini
