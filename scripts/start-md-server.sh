@@ -14,21 +14,26 @@ fi
 #---------------------
 
 #------------------------
-#Download and Update Game
+#Connect to steam Download and Update Game
 #------------------------
-echo "downloading / updating game"
-if [ "${VALIDATE}" == "" ]; then
-	${STEAMCMD}/./steamcmd.sh \
-	+login anonymous \
-	+force_install_dir ${GAME_DIR} \
-	+app_update 629800 \
-	+quit 
+if [ "${STEAM_CONNECT}" == "True" ]; then
+	echo "${STEAM_CONNECT}"
+	echo "downloading / updating game"
+	if [ "${VALIDATE}" == "" ]; then
+		${STEAMCMD}/./steamcmd.sh \
+		+login anonymous \
+		+force_install_dir ${GAME_DIR} \
+		+app_update 629800 \
+		+quit 
+	else
+		${STEAMCMD}/./steamcmd.sh \
+		+login anonymous \
+		+force_install_dir ${GAME_DIR} \
+		+app_update 629800 validate\
+		+quit 
+	fi
 else
-	${STEAMCMD}/./steamcmd.sh \
-	+login anonymous \
-	+force_install_dir ${GAME_DIR} \
-	+app_update 629800 validate\
-	+quit 
+	echo "Steam is disabled for this containter"
 fi
 #------------------------
 
@@ -125,6 +130,18 @@ if [ ! -f ${GAME_DIR}/Mordhau/Saved/Config/LinuxServer/Game${SERVER}.ini ]; then
 		MAP2="MapRotation=BR_Taiga"
 	fi
 fi
+if [ ! -f ${GAME_DIR}/Mordhau/Saved/Config/LinuxServer/Game${SERVER}.ini ]; then
+	if [ "${GAME_MODE}" == "" ]; then
+		export DEFAULTMAP="ServerDefaultMap=/Game/Mordhau/Maps/ThePit/FFA_ThePit.FFA_ThePit"
+		export MAP1="MapRotation=FFA_Contraband" \
+		MAP2="MapRotation=FFA_Camp" \
+		MAP3="MapRotation=TDM_Grad" \
+		MAP4="MapRotation=FFA_ThePit" \
+		MAP5="MapRotation=TDM_Camp" \
+		MAP6="MapRotation=TDM_ThePit" \
+		MAP7="MapRotation=FFA_Tourney"
+	fi
+fi
 #--------------------------------------------------------------------------------
 
 #------------------------------------------
@@ -150,7 +167,14 @@ if [ "${COPY_CONFIG}" == "true" ]; then
 fi
 #--------------------------------------------
 
+#--------------------
+#Applying Port offset
+#--------------------
+export QUERYPORT=$(expr ${QUERYPORT} + ${OFFSET_PORT})
+export BEACONPORT=$(expr ${BEACONPORT} + ${OFFSET_PORT})
+export GAME_PORT=$(expr ${GAME_PORT} + ${OFFSET_PORT})
+#--------------------
 
 echo "starting-server"
 
-${GAME_DIR}/./MordhauServer.sh -log -port=$GAME_PORT -queryport=$QUERYPORT -GAMEINI=${GAME_DIR}/Mordhau/Saved/Config/LinuxServer/Game${SERVER}.ini -ENGINEINI=${GAME_DIR}/Mordhau/Saved/Config/LinuxServer/Engine${SERVER}.ini
+${GAME_DIR}/./MordhauServer.sh -log -port=$GAME_PORT -queryport=$QUERYPORT -BeaconPort=$BEACONPORT -GAMEINI=${GAME_DIR}/Mordhau/Saved/Config/LinuxServer/Game${SERVER}.ini -ENGINEINI=${GAME_DIR}/Mordhau/Saved/Config/LinuxServer/Engine${SERVER}.ini
