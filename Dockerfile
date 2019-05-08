@@ -23,7 +23,7 @@ ENV STEAMCMD="${DATA_DIR}/steamcmd" \
  GAME_MODE="" \
  SERVER="" \
  STEAM_CONNECT="True" \
- OFFSET_PORT=""
+ PORT_OFFSET=""
 
 RUN mkdir -p ${DATA_DIR}
 RUN mkdir -p ${STEAMCMD}

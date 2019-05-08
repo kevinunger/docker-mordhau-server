@@ -170,9 +170,9 @@ fi
 #--------------------
 #Applying Port offset
 #--------------------
-export QUERYPORT=$(expr ${QUERYPORT} + ${OFFSET_PORT})
-export BEACONPORT=$(expr ${BEACONPORT} + ${OFFSET_PORT})
-export GAME_PORT=$(expr ${GAME_PORT} + ${OFFSET_PORT})
+export QUERYPORT=$(expr ${QUERYPORT} + ${PORT_OFFSET})
+export BEACONPORT=$(expr ${BEACONPORT} + ${PORT_OFFSET})
+export GAME_PORT=$(expr ${GAME_PORT} + ${PORT_OFFSET})
 #--------------------
 
 echo "starting-server"
