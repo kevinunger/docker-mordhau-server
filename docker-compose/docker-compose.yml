@@ -13,6 +13,7 @@ services:
          - SERVER_NAME=
          - QUERYPORT=27015
          - GAME_PORT=7777
+         - BEACONPORT=15000
          - STEAMID64=
          - GAME_MODE=
          - SERVER=1
@@ -20,6 +21,7 @@ services:
         ports:
          - "7777:7777/udp"
          - "27015:27015/udp"
+         - "15000:15000/udp"
     Mordhau2:
         restart: unless-stopped
         container_name: Mordhau2
@@ -33,6 +35,7 @@ services:
          - SERVER_NAME=
          - QUERYPORT=27016
          - GAME_PORT=7778
+         - BEACONPORT=15001
          - STEAMID64=
          - GAME_MODE=DM
          - SERVER=2
@@ -40,6 +43,7 @@ services:
         ports:
          - "7778:7778/udp"
          - "27016:27016/udp"
+         - "15001:15001/udp"
     Mordhau3:
         restart: unless-stopped
         container_name: Mordhau3
@@ -53,3 +57,4 @@ services:
         ports:
          - "7779:7779/udp"
          - "27017:27017/udp"
+         - "15002:15002/udp"
