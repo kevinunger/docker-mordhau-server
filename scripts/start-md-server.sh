@@ -171,10 +171,14 @@ fi
 #Applying Port offset
 #--------------------
 export QUERYPORT=$(expr ${QUERYPORT} + ${PORT_OFFSET})
+echo "${QUERYPORT}"
 export BEACONPORT=$(expr ${BEACONPORT} + ${PORT_OFFSET})
+echo "${BEACONPORT}"
 export GAME_PORT=$(expr ${GAME_PORT} + ${PORT_OFFSET})
+echo "${GAME_PORT}"
 #--------------------
 
 echo "starting-server"
-
+echo "${GAME_DIR}/./MordhauServer.sh -log -port=$GAME_PORT -queryport=$QUERYPORT -BeaconPort=$BEACONPORT -GAMEINI=${GAME_DIR}/Mordhau/Saved/Config/LinuxServer/Game${SERVER}.ini -ENGINEINI=${GAME_DIR}/Mordhau/Saved/Config/LinuxServer/Engine${SERVER}.ini"
+echo "${GAME_DIR}/./MordhauServer.sh -log -port=$GAME_PORT -queryport=$QUERYPORT -BeaconPort=$BEACONPORT -GAMEINI=${GAME_DIR}/Mordhau/Saved/Config/LinuxServer/Game${SERVER}.ini -ENGINEINI=${GAME_DIR}/Mordhau/Saved/Config/LinuxServer/Engine${SERVER}.ini"
 ${GAME_DIR}/./MordhauServer.sh -log -port=$GAME_PORT -queryport=$QUERYPORT -BeaconPort=$BEACONPORT -GAMEINI=${GAME_DIR}/Mordhau/Saved/Config/LinuxServer/Game${SERVER}.ini -ENGINEINI=${GAME_DIR}/Mordhau/Saved/Config/LinuxServer/Engine${SERVER}.ini

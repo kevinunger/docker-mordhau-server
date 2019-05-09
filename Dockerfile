@@ -6,10 +6,10 @@ RUN apt-get update
 RUN apt-get -y install curl lib32gcc1 libfontconfig1 gettext-base libpangocairo-1.0-0 libnss3 libgconf2-4 libxi6 libxcursor1 libxss1 libxcomposite1 libasound2 libxdamage1 libxtst6 libatk1.0-0 libxrandr2
 
 ENV DATA_DIR="/serverdata"
-
-ENV STEAMCMD="${DATA_DIR}/steamcmd" \
- GAME_DIR="${DATA_DIR}/mordhau" \
- QUERYPORT="27015" \
+ENV STEAMCMD="${DATA_DIR}/steamcmd"
+ENV GAME_DIR="${DATA_DIR}/mordhau"
+ENV PORT_OFFSET="0"
+ENV QUERYPORT="27015" \
  GAME_PORT="7777" \
  BEACONPORT="15000" \
  VALIDATE="TRUE" \
@@ -22,8 +22,7 @@ ENV STEAMCMD="${DATA_DIR}/steamcmd" \
  ADMIN_PASSWORD="" \
  GAME_MODE="" \
  SERVER="" \
- STEAM_CONNECT="True" \
- PORT_OFFSET=""
+ STEAM_CONNECT="True"
 
 RUN mkdir -p ${DATA_DIR}
 RUN mkdir -p ${STEAMCMD}
@@ -40,3 +39,4 @@ RUN chown -R ${UID}:${GID} /opt/scripts
 USER steam
 
 ENTRYPOINT ["/opt/scripts/start-md-server.sh"]
+
