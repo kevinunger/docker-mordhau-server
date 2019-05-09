@@ -27,9 +27,7 @@ List of variables you can edit.
 STEAM_CONNECT=True<disable this for every subsequent container you make, so they don't all try to download the game>
 PLAYER_COUNT=16
 SERVER_NAME=Server
-QUERYPORT=27015
-GAME_PORT=7777
-BEACONPORT=15000
+PORT_OFFSET=0
 UID=99
 GID=100
 STEAMID64=
@@ -56,9 +54,7 @@ docker run -d \
  -p 27015:27015/udp \
  -p 7777:7777/udp \
  -p 15000:15000/udp \
- -e QUERYPORT=27015 \
- -e GAME_PORT=7777 \
- -e BEACONPORT=15000 \
+ -e PORT_OFFSET="0" \
  -e STEAMID64="" \
  -e PLAYER_COUNT="16" \
  -e SERVER_NAME="PLZ CHANGE" \
