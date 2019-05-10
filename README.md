@@ -24,7 +24,7 @@ docker-compose up -d
 ```
 List of variables you can edit.
 ```
-STEAM_CONNECT=True<disable this for every subsequent container you make, so they don't all try to download the game>
+STEAM_CONNECT=True(disable this for every subsequent container you make, so they don't all try to download the game)
 PLAYER_COUNT=16
 SERVER_NAME=Server
 QUERYPORT=27015
@@ -33,10 +33,10 @@ BEACONPORT=15000
 UID=99
 GID=100
 STEAMID64=
-ADMIN_PASSWORD=<not recommended just use SteamID>
+ADMIN_PASSWORD="not recommended just use SteamID"
 SERVER_PASSWORD=
-GAME_MODE=<FL,HRD,TDM,DM,SKM choose one>
-SERVER=<unique identifier>
+GAME_MODE=FL,HRD,TDM,DM,SKM choose one
+SERVER="unique identifier"
 ```
 
 ### Docker Run
