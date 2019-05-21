@@ -18,7 +18,7 @@ chown -R 99:100 /home/steam
 The `chown` command is needed because we don't run the game server as root for security reasons, but rather as a 'steam' user with user id 99:100(by default).
 
 ### Docker Compose
-There is an example of a docker-compose provided(with 3 servers by default). You can download and edit that to your hearts pleasure. This is really useful for running multiple servers at once. All you need to do is edit it and:
+There is an example of a docker-compose provided(with 3 servers by default). You can download and edit that to your hearts pleasure. This is really useful for running multiple servers at once. All you need to do is edit it and: [(/docker-compose)](https://github.com/Tetricz/docker-mordhau-server/tree/master/docker-compose)
 ```
 docker-compose up -d
 ```
